@@ -1,0 +1,87 @@
+<! DOCTYPE html>
+<html>
+    <head>
+    <link href="dashboard.css" rel="stylesheet">
+    </head>
+<div class="container">
+  <div class="container-top">
+    <div class="left">
+      <h2>Student Registration</h2>
+      <p>Application for UG students are available.</p>
+    </div>
+    <div class="right">
+     <a href="Registration.html"> <button id="createNew">Apply</button></a>
+    </div>
+  </div>
+  <div class="container-body">
+    <table id="table">
+      <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>12 percentage</th>
+      </tr>
+      <tr>
+        <td>First One</td>
+        <td>2 domains</td>
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Second One</td>
+        <td>3 domains</td>
+        <td>Not published</td>
+      </tr>
+      <tr>
+        <td>Third One</td>
+        <td>2 domains</td>
+        <td>On hold</td>
+      </tr>
+    </table>
+  </div>
+    <p id="db" ></p>
+                  <script>
+                          function click1()
+                      {
+                          var xhr;
+                          xhr = new XMLHttpRequest();
+                          xhr.onreadystatechange = function()
+                          {
+                              if(this.readyState == 4 && this.status == 200 )
+                                  {
+                                      document.getElementById("db").innerHTML=this.responseText;
+                                      var data = JSON.parse(this.responseText);
+                                      //console.log(data1.);
+                                      //console.log(data1.);
+                                      //console.log(data1.);
+                                      //console.log(data1.);
+                                  }
+                          };
+                          var url="http://localhost/login/vista_dashboard/material-dashboard-master/examples/d.php";
+                          xhr.open("GET",url,true);
+                          xhr.responseType = 'type';
+                          xhr.send();
+                      }
+                      //window.onload = click1();
+                  </script>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-container">
+    <form id="form" class="form">
+      <h2>Create a new list</h2>
+      <div class="form-control">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Please enter a name..." autocomplete="off" required>
+      </div>
+      <div class="form-control">
+        <label for="domain">Domain</label>
+        <input type="number" id="domain" placeholder="Please enter a domain number..." autocomplete="off" required>
+      </div>
+      <div class="form-control">
+        <label for="status">Status</label>
+        <input type="text" id="status" placeholder="Please enter the status..." autocomplete="off" required>
+      </div>
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+</div>
+</html>
